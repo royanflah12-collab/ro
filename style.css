@@ -1,0 +1,374 @@
+/* =========================
+   GLOBAL
+========================= */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,body{
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    font-family:"Poppins",sans-serif;
+    background:#02040d;
+    color:white;
+}
+
+/* =========================
+   GALAXY
+========================= */
+
+#galaxy{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:-4;
+}
+
+/* =========================
+   BACKGROUND IMAGE
+========================= */
+
+#bg{
+
+    position:fixed;
+
+    inset:0;
+
+    width:100%;
+
+    height:100%;
+
+    object-fit:cover;
+
+    filter:
+        brightness(.32)
+        saturate(1.15);
+
+    transform:scale(1);
+
+    transition:
+        opacity 1.2s ease,
+        transform 8s ease;
+
+    z-index:-3;
+
+}
+
+/* =========================
+   OVERLAY
+========================= */
+
+.overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+        radial-gradient(circle at center,
+        transparent,
+        rgba(0,0,0,.45)),
+
+        linear-gradient(
+        to top,
+        rgba(0,0,0,.85),
+        rgba(0,0,0,.15));
+
+    z-index:-2;
+
+}
+
+/* =========================
+   LIGHT SWEEP
+========================= */
+
+.light{
+
+    position:fixed;
+
+    inset:0;
+
+    background:
+
+        linear-gradient(
+
+            120deg,
+
+            transparent,
+
+            rgba(255,255,255,.08),
+
+            transparent
+
+        );
+
+    animation:
+
+        lightMove
+
+        8s linear infinite;
+
+}
+
+@keyframes lightMove{
+
+    from{
+
+        transform:translateX(-120%);
+
+    }
+
+    to{
+
+        transform:translateX(120%);
+
+    }
+
+}
+
+/* =========================
+   BOKEH
+========================= */
+
+#bokeh{
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    overflow:hidden;
+
+}
+
+#bokeh::before,
+
+#bokeh::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:320px;
+
+    height:320px;
+
+    border-radius:50%;
+
+    filter:blur(90px);
+
+    opacity:.18;
+
+}
+
+#bokeh::before{
+
+    background:#ff7fd4;
+
+    top:10%;
+
+    left:8%;
+
+    animation:float1 14s ease-in-out infinite alternate;
+
+}
+
+#bokeh::after{
+
+    background:#8ac6ff;
+
+    right:5%;
+
+    bottom:8%;
+
+    animation:float2 18s ease-in-out infinite alternate;
+
+}
+
+@keyframes float1{
+
+    from{
+
+        transform:translateY(0) translateX(0);
+
+    }
+
+    to{
+
+        transform:translateY(-70px) translateX(80px);
+
+    }
+
+}
+
+@keyframes float2{
+
+    from{
+
+        transform:translateY(0);
+
+    }
+
+    to{
+
+        transform:translateY(80px) translateX(-60px);
+
+    }
+
+}
+
+/* =========================
+   GLASS CARD
+========================= */
+
+.glass{
+
+    position:absolute;
+
+    left:50%;
+
+    top:50%;
+
+    transform:translate(-50%,-50%);
+
+    width:min(90vw,900px);
+
+    padding:48px;
+
+    border-radius:34px;
+
+    background:
+
+        rgba(255,255,255,.08);
+
+    backdrop-filter:blur(24px);
+
+    -webkit-backdrop-filter:blur(24px);
+
+    border:
+
+        1px solid rgba(255,255,255,.18);
+
+    box-shadow:
+
+        0 20px 80px rgba(0,0,0,.45),
+
+        inset 0 1px 0 rgba(255,255,255,.15);
+
+    text-align:center;
+
+}
+
+/* =========================
+   TITLE
+========================= */
+
+.title{
+
+    font-family:"Great Vibes",cursive;
+
+    font-size:clamp(2.8rem,6vw,5rem);
+
+    margin-bottom:18px;
+
+    color:#fff4d8;
+
+    text-shadow:
+
+        0 0 12px rgba(255,255,255,.3),
+
+        0 0 30px rgba(255,215,0,.3);
+
+}
+
+/* =========================
+   CAPTION
+========================= */
+
+#caption{
+
+    font-size:clamp(1.2rem,3vw,2.3rem);
+
+    line-height:1.7;
+
+    font-weight:500;
+
+    text-shadow:
+
+        0 0 15px rgba(0,0,0,.8),
+
+        0 0 35px rgba(255,105,180,.5);
+
+}
+
+/* =========================
+   TIMELINE
+========================= */
+
+#timeline{
+
+    position:fixed;
+
+    bottom:24px;
+
+    left:50%;
+
+    transform:translateX(-50%);
+
+    width:min(82vw,900px);
+
+    height:8px;
+
+    border-radius:999px;
+
+    background:rgba(255,255,255,.15);
+
+    overflow:hidden;
+
+}
+
+#progress{
+
+    width:0;
+
+    height:100%;
+
+    background:
+
+        linear-gradient(
+
+            90deg,
+
+            #ffd700,
+
+            #ff5aa8
+
+        );
+
+    transition:width .8s ease;
+
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:700px){
+
+    .glass{
+
+        width:92vw;
+
+        padding:30px;
+
+        border-radius:24px;
+
+    }
+
+}
